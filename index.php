@@ -1071,6 +1071,98 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Card 7: Vida Social & Espiritual -->
+            <div class="card-container">
+                <div class="card card-social">
+                    <div class="card-front">
+                        <div class="card-image-container">
+                            <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&h=400&fit=crop"
+                                 alt="Vida Social"
+                                 class="card-image"
+                                 onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22400%22%3E%3Crect fill=%22%23ff6b9d%22 width=%22800%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2240%22 fill=%22white%22%3E❤️ Vida Social%3C/text%3E%3C/svg%3E'">
+                            <div class="card-image-overlay"></div>
+                            <div class="card-icon">❤️</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div class="card-title">Vida Social & Espiritual</div>
+                                <div class="card-subtitle">Conexiones y relaciones significativas</div>
+                            </div>
+                            <div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progress-social" style="width: 0%"></div>
+                                </div>
+                                <p style="margin-top: 10px; font-size: 1em;">Toca para ver objetivos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3 style="color: #667eea; margin-bottom: 15px;">❤️ Vida Social & Espiritual</h3>
+
+                        <!-- Familia -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">👨‍👩‍👧 Conexión familiar - 2 actividades/mes</span>
+                            </div>
+                            <div class="frequency-label">Compartir tiempo de calidad (24 veces al año)</div>
+                            <div class="goal-progress" id="family-connection"></div>
+                        </div>
+
+                        <!-- Nuevas Amistades -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🤝 Hacer nuevos amigos - 1 amistad/mes</span>
+                            </div>
+                            <div class="frequency-label">Conocer personas nuevas (12 amigos nuevos al año)</div>
+                            <div class="goal-progress" id="new-friends"></div>
+                        </div>
+
+                        <!-- Eventos Sociales -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🎉 Asistir a eventos sociales - 2/mes</span>
+                            </div>
+                            <div class="frequency-label">Fiestas, reuniones, actividades grupales (24 eventos)</div>
+                            <div class="goal-progress" id="social-events"></div>
+                        </div>
+
+                        <!-- Vida de Pareja -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">💑 Citas y encuentros - 2 citas/mes</span>
+                            </div>
+                            <div class="frequency-label">Conocer personas para relación (24 citas al año)</div>
+                            <div class="goal-progress" id="dating"></div>
+                        </div>
+
+                        <!-- Crecimiento Espiritual -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🧘 Meditación y reflexión - 3 días/semana</span>
+                            </div>
+                            <div class="frequency-label">Práctica espiritual constante (156 sesiones al año)</div>
+                            <div class="goal-progress" id="meditation"></div>
+                        </div>
+
+                        <!-- Gratitud -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">📝 Diario de gratitud - Diario</span>
+                            </div>
+                            <div class="frequency-label">Escribir 3 agradecimientos diarios (365 días)</div>
+                            <div class="goal-progress" id="gratitude"></div>
+                        </div>
+
+                        <div class="card-buttons-container">
+                            <button class="importance-btn" onclick="showImportance('social')">💡 ¿Por qué es importante?</button>
+                            <button class="evidence-btn" onclick="openEvidenceModal('social')">🏆 Ver Logros</button>
+                        </div>
+                        <input type="file" id="cover-upload-social" class="cover-upload-input" accept="image/*" onchange="uploadCover('social', this)">
+                        <button class="change-cover-btn" onclick="document.getElementById('cover-upload-social').click()">📷 Cambiar Portada</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Estadísticas Resumen -->
@@ -1158,9 +1250,16 @@
             'savings-progress': { max: 12, category: 'finance' },
             'comfamiliar': { max: 1, category: 'finance' },
             'icetex-progress': { max: 12, category: 'finance' },
-            
+
             'license-moto': { max: 1, category: 'mobility' },
-            'license-car': { max: 1, category: 'mobility' }
+            'license-car': { max: 1, category: 'mobility' },
+
+            'family-connection': { max: 24, category: 'social' }, // 2 actividades/mes
+            'new-friends': { max: 12, category: 'social' }, // 1 amistad/mes
+            'social-events': { max: 24, category: 'social' }, // 2 eventos/mes
+            'dating': { max: 24, category: 'social' }, // 2 citas/mes
+            'meditation': { max: 156, category: 'social' }, // 3 días/semana
+            'gratitude': { max: 365, category: 'social' } // Diario
         };
 
         // Contenido de importancia para cada categoría
@@ -1312,6 +1411,51 @@
 
                     <p><strong>La movilidad es poder:</strong> Poder elegir cuándo moverte, a dónde ir y no depender de nadie ni de nada.</p>
                 `
+            },
+            'social': {
+                icon: '❤️',
+                title: 'Vida Social & Espiritual',
+                content: `
+                    <h3>Las relaciones son el verdadero tesoro</h3>
+                    <p>El estudio más largo sobre felicidad (Harvard, 80+ años) demostró que <strong>las relaciones significativas son el factor #1 para una vida plena</strong>, incluso más que dinero o éxito profesional.</p>
+
+                    <h3>Conexión familiar:</h3>
+                    <ul>
+                        <li><strong>Red de apoyo incondicional:</strong> Tu familia estará ahí en los momentos difíciles</li>
+                        <li><strong>Salud mental:</strong> Sentirse parte de algo más grande reduce depresión y ansiedad</li>
+                        <li><strong>Perspectiva:</strong> La familia te recuerda quién eres y de dónde vienes</li>
+                        <li><strong>Legado:</strong> Las memorias compartidas son lo que realmente perdura</li>
+                    </ul>
+
+                    <h3>Nuevas amistades y círculo social:</h3>
+                    <p>Hacer nuevos amigos <strong>expande tu visión del mundo</strong> y te conecta con nuevas oportunidades:</p>
+                    <ul>
+                        <li><strong>Diversidad de perspectivas:</strong> Cada persona aporta experiencias únicas</li>
+                        <li><strong>Oportunidades:</strong> Tu red social es tu red de oportunidades laborales y personales</li>
+                        <li><strong>Crecimiento personal:</strong> Los amigos te desafían a ser mejor versión de ti mismo</li>
+                        <li><strong>Felicidad:</strong> Las experiencias compartidas son más memorables que las solitarias</li>
+                    </ul>
+
+                    <h3>Vida de pareja:</h3>
+                    <p>Encontrar una pareja compatible <strong>multiplica la alegría y divide las penas</strong>:</p>
+                    <ul>
+                        <li><strong>Compañía:</strong> Alguien con quien compartir los éxitos y superar los fracasos</li>
+                        <li><strong>Crecimiento mutuo:</strong> Una buena pareja te impulsa a ser mejor persona</li>
+                        <li><strong>Intimidad emocional:</strong> Tener a alguien que realmente te conozca y acepte</li>
+                        <li><strong>Proyecto de vida:</strong> Construir algo juntos da propósito y dirección</li>
+                    </ul>
+
+                    <h3>Crecimiento espiritual:</h3>
+                    <p>La meditación, reflexión y gratitud <strong>te conectan contigo mismo</strong>:</p>
+                    <ul>
+                        <li><strong>Paz interior:</strong> Reduce ansiedad y estrés significativamente</li>
+                        <li><strong>Claridad mental:</strong> Te ayuda a tomar mejores decisiones</li>
+                        <li><strong>Resiliencia:</strong> Desarrollas capacidad de enfrentar adversidades</li>
+                        <li><strong>Propósito:</strong> Comprendes mejor qué es realmente importante para ti</li>
+                    </ul>
+
+                    <p><strong>El éxito sin conexiones humanas es vacío.</strong> Invierte tiempo en relaciones significativas - es la inversión más valiosa que puedes hacer.</p>
+                `
             }
         };
 
@@ -1327,7 +1471,8 @@
             health: [],
             life: [],
             finance: [],
-            mobility: []
+            mobility: [],
+            social: []
         };
         let currentCategory = '';
         let currentSlideIndex = 0;
@@ -1541,7 +1686,7 @@
 
         // Actualizar todos los progresos
         function updateAllProgress() {
-            const categories = ['growth', 'work', 'health', 'life', 'finance', 'mobility'];
+            const categories = ['growth', 'work', 'health', 'life', 'finance', 'mobility', 'social'];
             categories.forEach(cat => updateProgress(cat));
         }
 
