@@ -461,6 +461,30 @@
             transform: scale(1.05);
         }
 
+        /* Botón de cambiar portada */
+        .change-cover-btn {
+            background: #f093fb;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+            font-weight: 500;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .change-cover-btn:hover {
+            background: #f5576c;
+            transform: scale(1.05);
+        }
+
+        .cover-upload-input {
+            display: none;
+        }
+
         /* Modal de evidencias */
         .evidence-modal {
             display: none;
@@ -752,6 +776,8 @@
                             <button class="importance-btn" onclick="showImportance('growth')">💡 ¿Por qué es importante?</button>
                             <button class="evidence-btn" onclick="openEvidenceModal('growth')">🏆 Ver Logros</button>
                         </div>
+                        <input type="file" id="cover-upload-growth" class="cover-upload-input" accept="image/*" onchange="uploadCover('growth', this)">
+                        <button class="change-cover-btn" onclick="document.getElementById('cover-upload-growth').click()">📷 Cambiar Portada</button>
                     </div>
                 </div>
             </div>
@@ -805,6 +831,8 @@
                             <button class="importance-btn" onclick="showImportance('work')">💡 ¿Por qué es importante?</button>
                             <button class="evidence-btn" onclick="openEvidenceModal('work')">🏆 Ver Logros</button>
                         </div>
+                        <input type="file" id="cover-upload-work" class="cover-upload-input" accept="image/*" onchange="uploadCover('work', this)">
+                        <button class="change-cover-btn" onclick="document.getElementById('cover-upload-work').click()">📷 Cambiar Portada</button>
                     </div>
                 </div>
             </div>
@@ -872,6 +900,8 @@
                             <button class="importance-btn" onclick="showImportance('health')">💡 ¿Por qué es importante?</button>
                             <button class="evidence-btn" onclick="openEvidenceModal('health')">🏆 Ver Logros</button>
                         </div>
+                        <input type="file" id="cover-upload-health" class="cover-upload-input" accept="image/*" onchange="uploadCover('health', this)">
+                        <button class="change-cover-btn" onclick="document.getElementById('cover-upload-health').click()">📷 Cambiar Portada</button>
                     </div>
                 </div>
             </div>
@@ -923,6 +953,8 @@
                             <button class="importance-btn" onclick="showImportance('life')">💡 ¿Por qué es importante?</button>
                             <button class="evidence-btn" onclick="openEvidenceModal('life')">🏆 Ver Logros</button>
                         </div>
+                        <input type="file" id="cover-upload-life" class="cover-upload-input" accept="image/*" onchange="uploadCover('life', this)">
+                        <button class="change-cover-btn" onclick="document.getElementById('cover-upload-life').click()">📷 Cambiar Portada</button>
                     </div>
                 </div>
             </div>
@@ -982,6 +1014,8 @@
                             <button class="importance-btn" onclick="showImportance('finance')">💡 ¿Por qué es importante?</button>
                             <button class="evidence-btn" onclick="openEvidenceModal('finance')">🏆 Ver Logros</button>
                         </div>
+                        <input type="file" id="cover-upload-finance" class="cover-upload-input" accept="image/*" onchange="uploadCover('finance', this)">
+                        <button class="change-cover-btn" onclick="document.getElementById('cover-upload-finance').click()">📷 Cambiar Portada</button>
                     </div>
                 </div>
             </div>
@@ -1032,6 +1066,8 @@
                             <button class="importance-btn" onclick="showImportance('mobility')">💡 ¿Por qué es importante?</button>
                             <button class="evidence-btn" onclick="openEvidenceModal('mobility')">🏆 Ver Logros</button>
                         </div>
+                        <input type="file" id="cover-upload-mobility" class="cover-upload-input" accept="image/*" onchange="uploadCover('mobility', this)">
+                        <button class="change-cover-btn" onclick="document.getElementById('cover-upload-mobility').click()">📷 Cambiar Portada</button>
                     </div>
                 </div>
             </div>
@@ -1825,8 +1861,98 @@
             });
         }
 
+        // ========== SUBIR PORTADA PERSONALIZADA ==========
+
+        // Subir portada personalizada
+        async function uploadCover(category, inputElement) {
+            const file = inputElement.files[0];
+            if (!file) return;
+
+            // Validar tipo de archivo
+            if (!file.type.startsWith('image/')) {
+                alert('Por favor selecciona un archivo de imagen válido');
+                inputElement.value = '';
+                return;
+            }
+
+            // Validar tamaño (máximo 5MB)
+            const maxSize = 5 * 1024 * 1024; // 5MB
+            if (file.size > maxSize) {
+                alert('La imagen es demasiado grande. Por favor selecciona una imagen menor a 5MB');
+                inputElement.value = '';
+                return;
+            }
+
+            // Crear FormData para enviar el archivo
+            const formData = new FormData();
+            formData.append('cover_image', file);
+            formData.append('category', category);
+
+            try {
+                const response = await fetch('api.php?action=upload_cover', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('Error HTTP:', response.status, errorText);
+                    alert('Error del servidor: ' + response.status);
+                    return;
+                }
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert('✅ Portada actualizada exitosamente');
+
+                    // Actualizar la imagen de la portada en la tarjeta
+                    const cardImage = document.querySelector(`.card-${category} .card-image`);
+                    if (cardImage) {
+                        cardImage.src = result.data.image_url;
+                    }
+                } else {
+                    alert('❌ Error al subir la portada: ' + result.message);
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert('❌ Error al subir la portada');
+            }
+
+            // Limpiar el input
+            inputElement.value = '';
+        }
+
+        // Cargar portadas personalizadas al iniciar
+        async function loadCustomCovers() {
+            try {
+                const response = await fetch('api.php?action=get_all_covers');
+                if (!response.ok) return;
+
+                const result = await response.json();
+                if (!result.success) return;
+
+                const covers = result.data;
+
+                // Aplicar las portadas personalizadas a cada tarjeta
+                for (const [category, imageUrl] of Object.entries(covers)) {
+                    const cardImage = document.querySelector(`.card-${category} .card-image`);
+                    if (cardImage && imageUrl) {
+                        cardImage.src = imageUrl;
+                    }
+                }
+
+            } catch (error) {
+                console.error('Error al cargar portadas:', error);
+            }
+        }
+
         // Inicializar al cargar la página
-        window.addEventListener('load', loadData);
+        window.addEventListener('load', function() {
+            loadData();
+            loadCustomCovers();
+        });
     </script>
 
 </body>
