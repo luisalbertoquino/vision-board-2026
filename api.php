@@ -74,7 +74,7 @@ function handlePost($action) {
 
 // Obtener todo el progreso
 function getAllProgress() {
-    $conn = getConnection();
+    $conn = getDBConnection();
     if (!$conn) {
         jsonResponse(false, null, 'Error de conexión a la base de datos');
     }
@@ -95,7 +95,7 @@ function getAllProgress() {
         }
     }
     
-    closeConnection($conn);
+    $conn->close();
     jsonResponse(true, $progress);
 }
 
@@ -111,7 +111,7 @@ function toggleProgress() {
     $goal_index = (int)$input['goal_index'];
     $is_completed = isset($input['is_completed']) ? (bool)$input['is_completed'] : true;
     
-    $conn = getConnection();
+    $conn = getDBConnection();
     if (!$conn) {
         jsonResponse(false, null, 'Error de conexión a la base de datos');
     }
@@ -145,10 +145,10 @@ function toggleProgress() {
         $log_stmt->bind_param("sis", $goal_id, $goal_index, $action);
         $log_stmt->execute();
         
-        closeConnection($conn);
+        $conn->close();
         jsonResponse(true, ['goal_id' => $goal_id, 'goal_index' => $goal_index, 'is_completed' => $is_completed]);
     } else {
-        closeConnection($conn);
+        $conn->close();
         jsonResponse(false, null, 'Error al actualizar el progreso');
     }
 }
@@ -161,7 +161,7 @@ function saveAllProgress() {
         jsonResponse(false, null, 'Faltan datos de progreso');
     }
     
-    $conn = getConnection();
+    $conn = getDBConnection();
     if (!$conn) {
         jsonResponse(false, null, 'Error de conexión a la base de datos');
     }
@@ -184,18 +184,18 @@ function saveAllProgress() {
         }
         
         $conn->commit();
-        closeConnection($conn);
+        $conn->close();
         jsonResponse(true, null, 'Progreso guardado exitosamente');
     } catch (Exception $e) {
         $conn->rollback();
-        closeConnection($conn);
+        $conn->close();
         jsonResponse(false, null, 'Error al guardar el progreso: ' . $e->getMessage());
     }
 }
 
 // Obtener estadísticas
 function getStats() {
-    $conn = getConnection();
+    $conn = getDBConnection();
     if (!$conn) {
         jsonResponse(false, null, 'Error de conexión a la base de datos');
     }
@@ -227,7 +227,7 @@ function getStats() {
         ];
     }
     
-    closeConnection($conn);
+    $conn->close();
     
     jsonResponse(true, [
         'total_points' => (int)$total,
@@ -238,7 +238,7 @@ function getStats() {
 
 // Obtener fecha de inicio
 function getStartDate() {
-    $conn = getConnection();
+    $conn = getDBConnection();
     if (!$conn) {
         jsonResponse(false, null, 'Error de conexión a la base de datos');
     }
@@ -248,10 +248,10 @@ function getStartDate() {
 
     if ($result && $result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        closeConnection($conn);
+        $conn->close();
         jsonResponse(true, ['start_date' => $row['setting_value']]);
     } else {
-        closeConnection($conn);
+        $conn->close();
         jsonResponse(false, null, 'Fecha de inicio no encontrada');
     }
 }
@@ -264,7 +264,7 @@ function getEvidences() {
         jsonResponse(false, null, 'Categoría no especificada');
     }
 
-    $conn = getConnection();
+    $conn = getDBConnection();
     if (!$conn) {
         jsonResponse(false, null, 'Error de conexión a la base de datos');
     }
@@ -286,7 +286,7 @@ function getEvidences() {
         }
     }
 
-    closeConnection($conn);
+    $conn->close();
     jsonResponse(true, $evidences);
 }
 
@@ -317,7 +317,7 @@ function uploadEvidence() {
         jsonResponse(false, null, 'Formato de imagen inválido');
     }
 
-    $conn = getConnection();
+    $conn = getDBConnection();
     if (!$conn) {
         jsonResponse(false, null, 'Error de conexión a la base de datos');
     }
@@ -326,7 +326,7 @@ function uploadEvidence() {
     $stmt = $conn->prepare($sql);
 
     if (!$stmt) {
-        closeConnection($conn);
+        $conn->close();
         jsonResponse(false, null, 'Error al preparar consulta: ' . $conn->error);
     }
 
@@ -334,11 +334,11 @@ function uploadEvidence() {
 
     if ($stmt->execute()) {
         $evidence_id = $conn->insert_id;
-        closeConnection($conn);
+        $conn->close();
         jsonResponse(true, ['id' => $evidence_id], 'Evidencia guardada exitosamente');
     } else {
         $error = $stmt->error;
-        closeConnection($conn);
+        $conn->close();
         jsonResponse(false, null, 'Error al guardar la evidencia: ' . $error);
     }
 }
@@ -353,7 +353,7 @@ function deleteEvidence() {
 
     $evidence_id = (int)$input['id'];
 
-    $conn = getConnection();
+    $conn = getDBConnection();
     if (!$conn) {
         jsonResponse(false, null, 'Error de conexión a la base de datos');
     }
@@ -363,10 +363,10 @@ function deleteEvidence() {
     $stmt->bind_param("i", $evidence_id);
 
     if ($stmt->execute()) {
-        closeConnection($conn);
+        $conn->close();
         jsonResponse(true, null, 'Evidencia eliminada exitosamente');
     } else {
-        closeConnection($conn);
+        $conn->close();
         jsonResponse(false, null, 'Error al eliminar la evidencia');
     }
 }
