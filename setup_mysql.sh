@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script para configurar la base de datos MySQL para Vision Board 2026
-# Uso: sudo bash setup_mysql.sh
+# Uso: bash setup_mysql.sh
 
 echo "==================================="
 echo "Vision Board 2026 - MySQL Setup"
@@ -19,8 +19,13 @@ echo "Database: $DB_NAME"
 echo "User: $DB_USER"
 echo ""
 
+# Solicitar contraseña de MySQL root
+echo "Por favor ingresa la contraseña de MySQL root:"
+read -s MYSQL_ROOT_PASS
+echo ""
+
 # Crear la base de datos y el usuario
-mysql -u root <<MYSQL_SCRIPT
+mysql -u root -p"$MYSQL_ROOT_PASS" <<MYSQL_SCRIPT
 -- Crear base de datos
 CREATE DATABASE IF NOT EXISTS ${DB_NAME} CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
