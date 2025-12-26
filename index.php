@@ -1416,7 +1416,17 @@
                 const response = await fetch('api.php?action=get_all_progress');
                 const result = await response.json();
                 if (result.success && result.data) {
-                    visionData.goals = result.data;
+                    // Transformar datos del API (que vienen como {completed: bool, date: string})
+                    // a formato simple (true/false)
+                    const transformedData = {};
+                    for (const goalId in result.data) {
+                        transformedData[goalId] = {};
+                        for (const index in result.data[goalId]) {
+                            transformedData[goalId][index] = result.data[goalId][index].completed;
+                        }
+                    }
+                    visionData.goals = transformedData;
+                    console.log('Datos cargados desde BD:', transformedData);
                 }
             } catch (error) {
                 console.error('Error al cargar progreso:', error);
