@@ -12,9 +12,7 @@ echo ""
 
 # Variables de configuración
 PROJECT_NAME="vision_board_2026"
-GITHUB_TOKEN="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"
-GITHUB_USER="luisalbertoquino"
-REPO_URL="https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/luisalbertoquino/vision-board-2026.git"
+REPO_URL="https://github.com/luisalbertoquino/vision-board-2026.git"
 INSTALL_DIR="/var/www/$PROJECT_NAME"
 BACKUP_DIR="/var/www/backups/$PROJECT_NAME"
 TEMP_DIR="/tmp/$PROJECT_NAME"
