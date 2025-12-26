@@ -109,7 +109,7 @@ function toggleProgress() {
     
     $goal_id = $input['goal_id'];
     $goal_index = (int)$input['goal_index'];
-    $is_completed = isset($input['is_completed']) ? (bool)$input['is_completed'] : true;
+    $is_completed = isset($input['is_completed']) ? (int)(bool)$input['is_completed'] : 1;
     
     $conn = getDBConnection();
     if (!$conn) {
@@ -171,7 +171,7 @@ function saveAllProgress() {
     try {
         foreach ($input['progress'] as $goal_id => $indices) {
             foreach ($indices as $index => $completed) {
-                $is_completed = (bool)$completed;
+                $is_completed = (int)(bool)$completed;
                 $completed_date = $is_completed ? date('Y-m-d H:i:s') : null;
                 
                 $sql = "INSERT INTO goal_progress (goal_id, goal_index, is_completed, completed_date) 
