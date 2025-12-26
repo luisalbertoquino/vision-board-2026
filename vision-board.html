@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision Board 2026 | Luis Alberto Quino</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            animation: fadeInDown 1s ease;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .motto {
+            font-size: 1.3em;
+            font-style: italic;
+            background: rgba(255,255,255,0.2);
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+            margin-top: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .card-container {
+            perspective: 1000px;
+            height: 500px;
+        }
+
+        .card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .card-container:hover .card {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .card-front {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 50%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-image-container {
+            position: relative;
+            width: 100%;
+            height: 50%;
+        }
+
+        .card-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .card-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-header {
+            flex: 1;
+        }
+
+        .card-back {
+            background: white;
+            transform: rotateY(180deg);
+            overflow-y: auto;
+        }
+
+        .card-icon {
+            font-size: 2.5em;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 10px;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .card-subtitle {
+            font-size: 1em;
+            opacity: 0.95;
+        }
+
+        .goal-item {
+            background: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .goal-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .goal-text {
+            flex: 1;
+            font-size: 1em;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .goal-progress {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-left: 32px;
+        }
+
+        .progress-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid #667eea;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7em;
+        }
+
+        .progress-dot.completed {
+            background: #667eea;
+            color: white;
+        }
+
+        .progress-dot:hover {
+            transform: scale(1.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .frequency-label {
+            font-size: 0.85em;
+            color: #666;
+            font-style: italic;
+            margin-left: 32px;
+            margin-top: 4px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        .importance-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 1em;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .importance-btn:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+
+        /* Colores diferentes para cada categoría - Más oscuros y vivos */
+        .card-growth .card-front {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0891b2 100%);
+        }
+
+        .card-work .card-front {
+            background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+        }
+
+        .card-health .card-front {
+            background: linear-gradient(135deg, #be123c 0%, #fb923c 100%);
+        }
+
+        .card-life .card-front {
+            background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 100%);
+        }
+
+        .card-finance .card-front {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        }
+
+        .card-mobility .card-front {
+            background: linear-gradient(135deg, #be185d 0%, #ec4899 100%);
+        }
+
+        /* Modal para importancia */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            animation: fadeIn 0.3s;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            position: relative;
+            margin: 80px auto;
+            max-width: 700px;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .modal-icon {
+            font-size: 3em;
+        }
+
+        .modal-title {
+            font-size: 2em;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .importance-content {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .importance-content h3 {
+            color: #667eea;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .importance-content ul {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        .importance-content li {
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+
+        .importance-content strong {
+            color: #764ba2;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #667eea;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #764ba2;
+            transform: scale(1.1);
+        }
+
+        .stats-summary {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin-top: 30px;
+        }
+
+        .stats-summary h2 {
+            font-size: 1.8em;
+        }
+
+        .stats-summary p {
+            font-size: 1.1em;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 1em;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Botón de evidencias */
+        .evidence-btn {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: 2px solid white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+
+        .evidence-btn:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        /* Modal de evidencias */
+        .evidence-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s;
+        }
+
+        .evidence-modal-content {
+            position: relative;
+            margin: 50px auto;
+            max-width: 900px;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .evidence-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .evidence-title {
+            font-size: 1.8em;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .upload-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 2px dashed #667eea;
+        }
+
+        .upload-input {
+            display: none;
+        }
+
+        .upload-label {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .upload-label:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+
+        /* Slider de evidencias */
+        .evidence-slider {
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+
+        .slider-item {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .slider-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            background: #000;
+            border-radius: 10px;
+        }
+
+        .slider-caption {
+            padding: 15px;
+            background: #f8f9fa;
+            text-align: center;
+            font-size: 1.1em;
+            color: #333;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            cursor: pointer;
+            font-size: 1.5em;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .slider-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .slider-nav.prev {
+            left: 10px;
+        }
+
+        .slider-nav.next {
+            right: 10px;
+        }
+
+        .slider-dots {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .slider-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .slider-dot.active {
+            background: #667eea;
+            transform: scale(1.3);
+        }
+
+        .no-evidence {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+            font-size: 1.1em;
+        }
+
+        .delete-evidence-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(220, 38, 38, 0.9);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+
+        .delete-evidence-btn:hover {
+            background: rgba(185, 28, 28, 1);
+        }
+
+        /* Animación de confeti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #667eea;
+            position: absolute;
+            animation: confetti-fall 3s linear forwards;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(0) rotateZ(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotateZ(720deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            .motto {
+                font-size: 1em;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .evidence-modal-content {
+                margin: 20px;
+                padding: 20px;
+            }
+            .slider-image {
+                max-height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>✨ Vision Board 2026 ✨</h1>
+            <div class="motto">
+                "Disciplina diaria hoy, tranquilidad y libertad mañana"
+            </div>
+        </header>
+
+        <div class="grid">
+            <!-- Card 1: Crecimiento Profesional -->
+            <div class="card-container">
+                <div class="card card-growth">
+                    <div class="card-front">
+                        <div class="card-image-container">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=400&fit=crop"
+                                 alt="Crecimiento Profesional"
+                                 class="card-image"
+                                 onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22400%22%3E%3Crect fill=%22%234facfe%22 width=%22800%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2240%22 fill=%22white%22%3E🌱 Crecimiento%3C/text%3E%3C/svg%3E'">
+                            <div class="card-image-overlay"></div>
+                            <div class="card-icon">🌱</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div class="card-title">Crecimiento Profesional</div>
+                                <div class="card-subtitle">Aprender, practicar y mostrar</div>
+                            </div>
+                            <div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progress-growth" style="width: 0%"></div>
+                                </div>
+                                <p style="margin-top: 10px; font-size: 1em;">Toca para ver objetivos</p>
+                                <button class="evidence-btn" onclick="openEvidenceModal('growth')">🏆 Ver Logros</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3 style="margin-bottom: 20px; color: #667eea; font-size: 1.3em;">Objetivos de Crecimiento</h3>
+                        
+                        <!-- Tecnologías (mensual - 12 por año) -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🚀 Nuevas tecnologías con proyecto funcional</span>
+                            </div>
+                            <div class="frequency-label">Meta: 2 por mes (24 al año)</div>
+                            <div class="goal-progress" id="tech-progress"></div>
+                        </div>
+
+                        <!-- Dibujos (semanal - 52 por año) -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🎨 Dibujos semanales en tableta digital</span>
+                            </div>
+                            <div class="frequency-label">Meta: 1 por semana (52 al año)</div>
+                            <div class="goal-progress" id="drawing-progress"></div>
+                        </div>
+
+                        <!-- Lectura (semanal - 52 semanas) -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">📘 Capítulos de libro leídos</span>
+                            </div>
+                            <div class="frequency-label">Meta: 4 por semana (208 al año)</div>
+                            <div class="goal-progress" id="reading-progress"></div>
+                        </div>
+
+                        <!-- Inglés - objetivos únicos -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🌍 Test inicial de inglés técnico</span>
+                            </div>
+                            <div class="goal-progress" id="english-test"></div>
+                        </div>
+
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🌍 Plan de estudio inglés completado (6 meses)</span>
+                            </div>
+                            <div class="goal-progress" id="english-plan"></div>
+                        </div>
+
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🧩 Portafolio actualizado constantemente</span>
+                            </div>
+                            <div class="frequency-label">Actualización mensual (12 veces al año)</div>
+                            <div class="goal-progress" id="portfolio-progress"></div>
+                        </div>
+
+                        <button class="importance-btn" onclick="showImportance('growth')">💡 ¿Por qué es importante?</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Trabajo & Propósito -->
+            <div class="card-container">
+                <div class="card card-work">
+                    <div class="card-front">
+                        <div class="card-image-container">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=400&fit=crop"
+                                 alt="Trabajo Remoto"
+                                 class="card-image"
+                                 onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22400%22%3E%3Crect fill=%22%2343e97b%22 width=%22800%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2240%22 fill=%22white%22%3E💼 Trabajo%3C/text%3E%3C/svg%3E'">
+                            <div class="card-image-overlay"></div>
+                            <div class="card-icon">💼</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div class="card-title">Trabajo & Propósito</div>
+                                <div class="card-subtitle">Tiempo, libertad y bienestar</div>
+                            </div>
+                            <div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progress-work" style="width: 0%"></div>
+                                </div>
+                                <p style="margin-top: 10px; font-size: 1em;">Toca para ver objetivos</p>
+                                <button class="evidence-btn" onclick="openEvidenceModal('work')">🏆 Ver Logros</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3 style="margin-bottom: 20px; color: #43e97b; font-size: 1.3em;">Objetivos Laborales</h3>
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">💻 Búsqueda activa trabajo remoto</span>
+                            </div>
+                            <div class="goal-progress" id="remote-job"></div>
+                        </div>
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">⚖️ Trabajo con mejor balance tiempo/vida</span>
+                            </div>
+                            <div class="goal-progress" id="work-balance"></div>
+                        </div>
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🧭 Alineación con crecimiento personal</span>
+                            </div>
+                            <div class="goal-progress" id="work-alignment"></div>
+                        </div>
+                        <button class="importance-btn" onclick="showImportance('work')">💡 ¿Por qué es importante?</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Salud & Bienestar -->
+            <div class="card-container">
+                <div class="card card-health">
+                    <div class="card-front">
+                        <div class="card-image-container">
+                            <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&h=400&fit=crop"
+                                 alt="Salud y Bienestar"
+                                 class="card-image"
+                                 onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22400%22%3E%3Crect fill=%22%23fa709a%22 width=%22800%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2240%22 fill=%22white%22%3E🏃 Salud%3C/text%3E%3C/svg%3E'">
+                            <div class="card-image-overlay"></div>
+                            <div class="card-icon">🏃‍♂️</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div class="card-title">Salud & Bienestar</div>
+                                <div class="card-subtitle">Constancia, no perfección</div>
+                            </div>
+                            <div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progress-health" style="width: 0%"></div>
+                                </div>
+                                <p style="margin-top: 10px; font-size: 1em;">Toca para ver objetivos</p>
+                                <button class="evidence-btn" onclick="openEvidenceModal('health')">🏆 Ver Logros</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3 style="margin-bottom: 20px; color: #fa709a; font-size: 1.3em;">Objetivos de Salud</h3>
+                        
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🏃 Trote de 10 km (2 vueltas Único-USCO)</span>
+                            </div>
+                            <div class="frequency-label">Meta: 3 veces por semana (156 al año)</div>
+                            <div class="goal-progress" id="running-progress"></div>
+                        </div>
+
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🦷 Citas de ortodoncia</span>
+                            </div>
+                            <div class="frequency-label">Mensual desde enero (12 al año)</div>
+                            <div class="goal-progress" id="orthodontics-progress"></div>
+                        </div>
+
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🍹 Días sin bebidas azucaradas</span>
+                            </div>
+                            <div class="frequency-label">Meta: Reducción progresiva</div>
+                            <div class="goal-progress" id="sugar-progress"></div>
+                        </div>
+
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">👓 Compra de lentes</span>
+                            </div>
+                            <div class="goal-progress" id="glasses"></div>
+                        </div>
+
+                        <button class="importance-btn" onclick="showImportance('health')">💡 ¿Por qué es importante?</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Vida Diaria -->
+            <div class="card-container">
+                <div class="card card-life">
+                    <div class="card-front">
+                        <div class="card-image-container">
+                            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&h=400&fit=crop"
+                                 alt="Vida Diaria"
+                                 class="card-image"
+                                 onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22400%22%3E%3Crect fill=%22%2330cfd0%22 width=%22800%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2240%22 fill=%22white%22%3E🍽️ Vida%3C/text%3E%3C/svg%3E'">
+                            <div class="card-image-overlay"></div>
+                            <div class="card-icon">🍽️</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div class="card-title">Vida Diaria</div>
+                                <div class="card-subtitle">Disfrutar el proceso</div>
+                            </div>
+                            <div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progress-life" style="width: 0%"></div>
+                                </div>
+                                <p style="margin-top: 10px; font-size: 1em;">Toca para ver objetivos</p>
+                                <button class="evidence-btn" onclick="openEvidenceModal('life')">🏆 Ver Logros</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3 style="margin-bottom: 20px; color: #30cfd0; font-size: 1.3em;">Objetivos Diarios</h3>
+                        
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">👨‍🍳 Almuerzos diferentes preparados</span>
+                            </div>
+                            <div class="frequency-label">Meta: 1 por semana (52 al año)</div>
+                            <div class="goal-progress" id="cooking-progress"></div>
+                        </div>
+
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🧘 Rutinas de calma establecidas</span>
+                            </div>
+                            <div class="goal-progress" id="routines"></div>
+                        </div>
+
+                        <button class="importance-btn" onclick="showImportance('life')">💡 ¿Por qué es importante?</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: Finanzas -->
+            <div class="card-container">
+                <div class="card card-finance">
+                    <div class="card-front">
+                        <div class="card-image-container">
+                            <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&h=400&fit=crop"
+                                 alt="Finanzas"
+                                 class="card-image"
+                                 onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22400%22%3E%3Crect fill=%22%23a8edea%22 width=%22800%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2240%22 fill=%22white%22%3E💰 Finanzas%3C/text%3E%3C/svg%3E'">
+                            <div class="card-image-overlay"></div>
+                            <div class="card-icon">💰</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div class="card-title">Finanzas</div>
+                                <div class="card-subtitle">Tranquilidad y control</div>
+                            </div>
+                            <div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progress-finance" style="width: 0%"></div>
+                                </div>
+                                <p style="margin-top: 10px; font-size: 1em;">Toca para ver objetivos</p>
+                                <button class="evidence-btn" onclick="openEvidenceModal('finance')">🏆 Ver Logros</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3 style="margin-bottom: 20px; color: #a8edea; font-size: 1.3em;">Objetivos Financieros</h3>
+                        
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🏦 Meses ahorrando para fondo de emergencia</span>
+                            </div>
+                            <div class="frequency-label">Meta: 12 meses consecutivos</div>
+                            <div class="goal-progress" id="savings-progress"></div>
+                        </div>
+
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">✅ Pago final crédito Comfamiliar</span>
+                            </div>
+                            <div class="goal-progress" id="comfamiliar"></div>
+                        </div>
+
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">📉 Pagos mensuales ICETEX</span>
+                            </div>
+                            <div class="frequency-label">Reducción progresiva (12 pagos)</div>
+                            <div class="goal-progress" id="icetex-progress"></div>
+                        </div>
+
+                        <button class="importance-btn" onclick="showImportance('finance')">💡 ¿Por qué es importante?</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6: Movilidad -->
+            <div class="card-container">
+                <div class="card card-mobility">
+                    <div class="card-front">
+                        <div class="card-image-container">
+                            <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=800&h=400&fit=crop"
+                                 alt="Movilidad"
+                                 class="card-image"
+                                 onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22400%22%3E%3Crect fill=%22%23ff9a9e%22 width=%22800%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2240%22 fill=%22white%22%3E🛵 Movilidad%3C/text%3E%3C/svg%3E'">
+                            <div class="card-image-overlay"></div>
+                            <div class="card-icon">🛵</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div class="card-title">Movilidad</div>
+                                <div class="card-subtitle">Opciones abiertas</div>
+                            </div>
+                            <div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progress-mobility" style="width: 0%"></div>
+                                </div>
+                                <p style="margin-top: 10px; font-size: 1em;">Toca para ver objetivos</p>
+                                <button class="evidence-btn" onclick="openEvidenceModal('mobility')">🏆 Ver Logros</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3 style="margin-bottom: 20px; color: #ff9a9e; font-size: 1.3em;">Objetivos de Movilidad</h3>
+                        
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🪪 Pase de conducción moto (prioridad)</span>
+                            </div>
+                            <div class="goal-progress" id="license-moto"></div>
+                        </div>
+
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🚗 Pase de conducción carro (opcional)</span>
+                            </div>
+                            <div class="goal-progress" id="license-car"></div>
+                        </div>
+
+                        <button class="importance-btn" onclick="showImportance('mobility')">💡 ¿Por qué es importante?</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Estadísticas Resumen -->
+        <div class="stats-summary">
+            <h2 style="color: #667eea; margin-bottom: 10px;">📊 Mi Progreso General</h2>
+            <p style="color: #666; margin-bottom: 20px;">Sigue avanzando hacia tus objetivos</p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" id="total-goals">0</div>
+                    <div class="stat-label">Objetivos Totales</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="completed-goals">0</div>
+                    <div class="stat-label">Completados</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="completion-percent">0%</div>
+                    <div class="stat-label">Progreso Total</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="days-active">1</div>
+                    <div class="stat-label">Días Activo</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para importancia -->
+    <div id="importanceModal" class="modal">
+        <span class="close-modal" onclick="closeImportance()">&times;</span>
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-icon" id="modal-icon">🌱</div>
+                <div class="modal-title" id="modal-title">Importancia</div>
+            </div>
+            <div class="importance-content" id="importance-text">
+                <!-- El contenido se cargará dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de evidencias -->
+    <div id="evidenceModal" class="evidence-modal">
+        <div class="evidence-modal-content">
+            <span class="close-modal" onclick="closeEvidenceModal()">&times;</span>
+            <div class="evidence-header">
+                <div class="evidence-title" id="evidence-category-title">Mis Logros</div>
+            </div>
+
+            <div class="upload-section">
+                <h3 style="margin-bottom: 15px; color: #667eea;">Subir Nueva Evidencia</h3>
+                <input type="file" id="evidenceUpload" class="upload-input" accept="image/*" onchange="uploadEvidence(event)">
+                <label for="evidenceUpload" class="upload-label">📸 Seleccionar Imagen</label>
+                <p style="margin-top: 10px; color: #666; font-size: 0.95em;">Sube una foto de tu logro completado</p>
+            </div>
+
+            <div class="evidence-slider" id="evidenceSlider">
+                <!-- El slider se generará dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuración de objetivos con su frecuencia
+        const goalsConfig = {
+            'tech-progress': { max: 24, category: 'growth' },
+            'drawing-progress': { max: 52, category: 'growth' },
+            'reading-progress': { max: 52, category: 'growth' }, // Mostramos semanas, no capítulos individuales
+            'english-test': { max: 1, category: 'growth' },
+            'english-plan': { max: 6, category: 'growth' }, // 6 meses de plan
+            'portfolio-progress': { max: 12, category: 'growth' },
+            
+            'remote-job': { max: 1, category: 'work' },
+            'work-balance': { max: 1, category: 'work' },
+            'work-alignment': { max: 1, category: 'work' },
+            
+            'running-progress': { max: 52, category: 'health' }, // Mostramos semanas para simplificar
+            'orthodontics-progress': { max: 12, category: 'health' },
+            'sugar-progress': { max: 52, category: 'health' }, // Semanas sin azúcar
+            'glasses': { max: 1, category: 'health' },
+            
+            'cooking-progress': { max: 52, category: 'life' },
+            'routines': { max: 1, category: 'life' },
+            
+            'savings-progress': { max: 12, category: 'finance' },
+            'comfamiliar': { max: 1, category: 'finance' },
+            'icetex-progress': { max: 12, category: 'finance' },
+            
+            'license-moto': { max: 1, category: 'mobility' },
+            'license-car': { max: 1, category: 'mobility' }
+        };
+
+        // Contenido de importancia para cada categoría
+        const importanceContent = {
+            'growth': {
+                icon: '🌱',
+                title: 'Crecimiento Profesional',
+                content: `
+                    <h3>¿Por qué invertir en tu crecimiento profesional?</h3>
+                    <p>El desarrollo continuo de habilidades técnicas no es solo una ventaja competitiva, es una <strong>necesidad en el mundo tecnológico actual</strong>. Cada nueva tecnología que dominas multiplica tus oportunidades laborales y tu valor en el mercado.</p>
+                    
+                    <h3>Beneficios directos:</h3>
+                    <ul>
+                        <li><strong>Mayores oportunidades laborales:</strong> Las empresas remotas y tech buscan constantemente profesionales actualizados con portafolios demostrables</li>
+                        <li><strong>Mejor remuneración:</strong> Dominar tecnologías modernas puede incrementar tu salario entre 30-50% en 1-2 años</li>
+                        <li><strong>Trabajo remoto:</strong> El dominio técnico te abre las puertas al trabajo remoto internacional, con sueldos en dólares o euros</li>
+                        <li><strong>Proyectos propios:</strong> Con las habilidades correctas, puedes crear productos digitales que generen ingresos pasivos</li>
+                        <li><strong>Inglés técnico:</strong> El 80% de la documentación tech está en inglés. Dominarlo te da acceso a recursos ilimitados y oportunidades globales</li>
+                    </ul>
+
+                    <h3>El portafolio es tu carta de presentación:</h3>
+                    <p>Un portafolio actualizado con proyectos reales vale más que 10 certificados. Demuestra que no solo sabes teoría, sino que <strong>puedes ejecutar y entregar resultados</strong>.</p>
+                `
+            },
+            'work': {
+                icon: '💼',
+                title: 'Trabajo & Propósito',
+                content: `
+                    <h3>¿Por qué buscar un trabajo alineado con tu vida?</h3>
+                    <p>Pasamos más de 8 horas diarias trabajando. Si ese tiempo no te aporta <strong>crecimiento, bienestar o propósito</strong>, estás sacrificando tu vida por un salario.</p>
+                    
+                    <h3>El trabajo remoto cambia tu calidad de vida:</h3>
+                    <ul>
+                        <li><strong>Tiempo recuperado:</strong> Sin desplazamientos, recuperas 2-3 horas diarias para ti mismo, tu familia o tus proyectos</li>
+                        <li><strong>Flexibilidad:</strong> Puedes organizar tu día de forma más eficiente y productiva según tus ritmos naturales</li>
+                        <li><strong>Salud mental:</strong> Menos estrés de tráfico, menos presión social de oficina, más autonomía</li>
+                        <li><strong>Oportunidades globales:</strong> Acceso a empresas de todo el mundo sin necesidad de migrar</li>
+                        <li><strong>Balance real:</strong> Más tiempo para ejercicio, alimentación saludable, hobbies y relaciones importantes</li>
+                    </ul>
+
+                    <h3>Trabajo con propósito:</h3>
+                    <p>Un trabajo que te permita crecer profesionalmente mientras mantienes tu bienestar no es un lujo, es un <strong>derecho que puedes construir</strong> con las habilidades correctas.</p>
+                `
+            },
+            'health': {
+                icon: '🏃‍♂️',
+                title: 'Salud & Bienestar',
+                content: `
+                    <h3>Tu salud es tu verdadero capital</h3>
+                    <p>Sin salud, todo lo demás pierde sentido. La inversión en tu cuerpo y bienestar hoy te ahorra <strong>dolor, dinero y tiempo</strong> en el futuro.</p>
+                    
+                    <h3>Beneficios del ejercicio constante:</h3>
+                    <ul>
+                        <li><strong>Salud cardiovascular:</strong> Reduce riesgo de enfermedades del corazón en un 35%</li>
+                        <li><strong>Energía diaria:</strong> Mejora tu rendimiento mental y físico durante todo el día</li>
+                        <li><strong>Salud mental:</strong> Reduce ansiedad, depresión y mejora tu estado de ánimo naturalmente</li>
+                        <li><strong>Mejor sueño:</strong> El ejercicio regular mejora la calidad del descanso</li>
+                        <li><strong>Longevidad:</strong> Agrega años de vida saludable y activa</li>
+                    </ul>
+
+                    <h3>Inversiones médicas preventivas:</h3>
+                    <ul>
+                        <li><strong>Ortodoncia:</strong> No es solo estética. Mejora digestión, previene dolores de cabeza y problemas de mandíbula. Una inversión que dura toda la vida</li>
+                        <li><strong>Lentes correctivos:</strong> Previene dolores de cabeza, mejora productividad y protege tu salud visual a largo plazo</li>
+                        <li><strong>Reducción de azúcar:</strong> Previene diabetes, mejora energía, protege tus dientes y reduce inflamación</li>
+                    </ul>
+
+                    <p><strong>La constancia importa más que la intensidad.</strong> 3 trotes semanales de 30 minutos valen más que un maratón esporádico.</p>
+                `
+            },
+            'life': {
+                icon: '🍽️',
+                title: 'Vida Diaria & Autocuidado',
+                content: `
+                    <h3>Las pequeñas rutinas construyen una gran vida</h3>
+                    <p>La felicidad no está en los grandes logros, sino en <strong>disfrutar el proceso diario</strong>. Las rutinas que te cuidan son inversiones en tu bienestar emocional.</p>
+                    
+                    <h3>Cocinar como autocuidado:</h3>
+                    <ul>
+                        <li><strong>Salud física:</strong> Control total sobre lo que comes, mejor nutrición</li>
+                        <li><strong>Economía:</strong> Ahorras significativamente vs comer fuera</li>
+                        <li><strong>Creatividad:</strong> Experimentar con recetas nuevas es terapéutico</li>
+                        <li><strong>Mindfulness:</strong> Cocinar te obliga a estar presente y concentrado</li>
+                        <li><strong>Orgullo personal:</strong> Cada comida exitosa es un pequeño logro</li>
+                    </ul>
+
+                    <h3>Rutinas de calma:</h3>
+                    <p>En un mundo acelerado, necesitas <strong>espacios de tranquilidad intencionales</strong>:</p>
+                    <ul>
+                        <li>Rutina matutina sin pantallas (15 minutos)</li>
+                        <li>Momentos de lectura o dibujo sin presión</li>
+                        <li>Caminatas sin objetivo, solo para pensar</li>
+                        <li>Horarios de desconexión digital</li>
+                    </ul>
+
+                    <p>Estas rutinas no son "perder tiempo", son <strong>inversiones en tu salud mental</strong> que te hacen más productivo y feliz el resto del día.</p>
+                `
+            },
+            'finance': {
+                icon: '💰',
+                title: 'Finanzas & Estabilidad',
+                content: `
+                    <h3>La tranquilidad financiera es libertad</h3>
+                    <p>El dinero no compra la felicidad, pero la <strong>falta de estabilidad financiera genera estrés constante</strong> que afecta tu salud, relaciones y decisiones.</p>
+                    
+                    <h3>Fondo de emergencia:</h3>
+                    <ul>
+                        <li><strong>Tranquilidad mental:</strong> Saber que puedes sobrevivir 3-6 meses sin ingresos te da poder de decisión</li>
+                        <li><strong>Mejores decisiones laborales:</strong> No aceptas trabajos por desesperación</li>
+                        <li><strong>Salud reducida:</strong> El estrés financiero es una de las principales causas de ansiedad</li>
+                        <li><strong>Oportunidades:</strong> Puedes invertir en tu educación o proyectos sin miedo</li>
+                    </ul>
+
+                    <h3>Eliminar deudas:</h3>
+                    <p>Cada peso que pagas de más en intereses es dinero que le quitas a tu futuro. <strong>Priorizar el pago de deudas</strong> libera flujo de caja para invertir en ti mismo:</p>
+                    <ul>
+                        <li><strong>Comfamiliar:</strong> Terminar este crédito libera presupuesto mensual</li>
+                        <li><strong>ICETEX:</strong> Reducción progresiva disminuye la presión financiera y mejora tu score crediticio</li>
+                    </ul>
+
+                    <h3>La disciplina financiera es un superpoder:</h3>
+                    <p>Ahorrar consistentemente, aunque sean montos pequeños, <strong>construye hábitos que cambian tu vida</strong>. No se trata de ser tacaño, sino de ser intencional con tu dinero.</p>
+                `
+            },
+            'mobility': {
+                icon: '🛵',
+                title: 'Movilidad & Independencia',
+                content: `
+                    <h3>La movilidad es independencia</h3>
+                    <p>Tener licencia de conducción (especialmente de moto) <strong>multiplica tus opciones</strong> en lo laboral, personal y de emergencias.</p>
+                    
+                    <h3>Beneficios de la licencia de moto:</h3>
+                    <ul>
+                        <li><strong>Economía:</strong> Más barato que carro en mantenimiento, combustible y parqueadero</li>
+                        <li><strong>Agilidad urbana:</strong> Evitas trancones, llegas más rápido a todos lados</li>
+                        <li><strong>Oportunidades laborales:</strong> Muchos trabajos remotos/freelance requieren movilidad propia</li>
+                        <li><strong>Flexibilidad:</strong> No dependes de horarios de transporte público</li>
+                        <li><strong>Emergencias:</strong> Puedes moverte cuando lo necesites sin depender de nadie</li>
+                    </ul>
+
+                    <h3>Licencia de carro (opcional):</h3>
+                    <p>Aunque no sea prioritario ahora, tener la licencia de carro te da <strong>opciones futuras</strong>:</p>
+                    <ul>
+                        <li>Viajes largos más cómodos</li>
+                        <li>Transporte de cosas grandes</li>
+                        <li>Clima adverso (lluvia fuerte)</li>
+                        <li>Opciones laborales que requieren carro</li>
+                    </ul>
+
+                    <p><strong>La movilidad es poder:</strong> Poder elegir cuándo moverte, a dónde ir y no depender de nadie ni de nada.</p>
+                `
+            }
+        };
+
+        // Sistema de almacenamiento local
+        const STORAGE_KEY = 'visionBoardData2026';
+        const EVIDENCE_KEY = 'visionBoardEvidence2026';
+        let visionData = {
+            goals: {},
+            startDate: new Date().toISOString()
+        };
+        let evidenceData = {
+            growth: [],
+            work: [],
+            health: [],
+            life: [],
+            finance: [],
+            mobility: []
+        };
+        let currentCategory = '';
+        let currentSlideIndex = 0;
+
+        // Inicializar puntos de progreso
+        function initializeProgress() {
+            Object.keys(goalsConfig).forEach(goalId => {
+                const config = goalsConfig[goalId];
+                const container = document.getElementById(goalId);
+                
+                if (container) {
+                    container.innerHTML = '';
+                    
+                    for (let i = 0; i < config.max; i++) {
+                        const dot = document.createElement('div');
+                        dot.className = 'progress-dot';
+                        dot.dataset.goalId = goalId;
+                        dot.dataset.index = i;
+                        
+                        if (visionData.goals[goalId] && visionData.goals[goalId][i]) {
+                            dot.classList.add('completed');
+                            dot.textContent = '✓';
+                        }
+                        
+                        dot.onclick = function() {
+                            toggleProgress(goalId, i);
+                        };
+                        
+                        container.appendChild(dot);
+                    }
+                }
+            });
+        }
+
+        // Toggle progreso
+        function toggleProgress(goalId, index) {
+            if (!visionData.goals[goalId]) {
+                visionData.goals[goalId] = {};
+            }
+
+            const wasCompleted = visionData.goals[goalId][index];
+            visionData.goals[goalId][index] = !visionData.goals[goalId][index];
+
+            const dot = document.querySelector(`[data-goal-id="${goalId}"][data-index="${index}"]`);
+            if (dot) {
+                if (visionData.goals[goalId][index]) {
+                    dot.classList.add('completed');
+                    dot.textContent = '✓';
+                    // Lanzar confeti solo cuando se completa (no cuando se desmarca)
+                    if (!wasCompleted) {
+                        launchConfetti();
+                    }
+                } else {
+                    dot.classList.remove('completed');
+                    dot.textContent = '';
+                }
+            }
+
+            saveData();
+            updateProgress(goalsConfig[goalId].category);
+            updateStats();
+        }
+
+        // Cargar datos guardados
+        function loadData() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                visionData = JSON.parse(saved);
+            }
+            const savedEvidence = localStorage.getItem(EVIDENCE_KEY);
+            if (savedEvidence) {
+                evidenceData = JSON.parse(savedEvidence);
+            }
+            initializeProgress();
+            updateAllProgress();
+            updateStats();
+        }
+
+        // Guardar datos
+        function saveData() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(visionData));
+        }
+
+        // Guardar evidencias
+        function saveEvidence() {
+            localStorage.setItem(EVIDENCE_KEY, JSON.stringify(evidenceData));
+        }
+
+        // Actualizar progreso de una categoría
+        function updateProgress(category) {
+            let totalPoints = 0;
+            let completedPoints = 0;
+            
+            Object.keys(goalsConfig).forEach(goalId => {
+                const config = goalsConfig[goalId];
+                if (config.category === category) {
+                    totalPoints += config.max;
+                    if (visionData.goals[goalId]) {
+                        completedPoints += Object.values(visionData.goals[goalId]).filter(v => v).length;
+                    }
+                }
+            });
+            
+            const percentage = totalPoints > 0 ? (completedPoints / totalPoints) * 100 : 0;
+            const progressBar = document.getElementById(`progress-${category}`);
+            if (progressBar) {
+                progressBar.style.width = percentage + '%';
+            }
+            
+            return { totalPoints, completedPoints, percentage };
+        }
+
+        // Actualizar todos los progresos
+        function updateAllProgress() {
+            const categories = ['growth', 'work', 'health', 'life', 'finance', 'mobility'];
+            categories.forEach(cat => updateProgress(cat));
+        }
+
+        // Actualizar estadísticas generales
+        function updateStats() {
+            let totalPoints = 0;
+            let completedPoints = 0;
+            
+            Object.keys(goalsConfig).forEach(goalId => {
+                const config = goalsConfig[goalId];
+                totalPoints += config.max;
+                if (visionData.goals[goalId]) {
+                    completedPoints += Object.values(visionData.goals[goalId]).filter(v => v).length;
+                }
+            });
+            
+            const percentage = totalPoints > 0 ? Math.round((completedPoints / totalPoints) * 100) : 0;
+            
+            document.getElementById('total-goals').textContent = totalPoints;
+            document.getElementById('completed-goals').textContent = completedPoints;
+            document.getElementById('completion-percent').textContent = percentage + '%';
+            
+            // Calcular días activos
+            if (visionData.startDate) {
+                const start = new Date(visionData.startDate);
+                const now = new Date();
+                const days = Math.floor((now - start) / (1000 * 60 * 60 * 24)) + 1;
+                document.getElementById('days-active').textContent = days;
+            }
+        }
+
+        // Mostrar popup de importancia
+        function showImportance(category) {
+            const modal = document.getElementById('importanceModal');
+            const content = importanceContent[category];
+            
+            if (content) {
+                document.getElementById('modal-icon').textContent = content.icon;
+                document.getElementById('modal-title').textContent = content.title;
+                document.getElementById('importance-text').innerHTML = content.content;
+                modal.style.display = 'block';
+            }
+        }
+
+        function closeImportance() {
+            document.getElementById('importanceModal').style.display = 'none';
+        }
+
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            const modal = document.getElementById('importanceModal');
+            const evidenceModal = document.getElementById('evidenceModal');
+            if (event.target == modal) {
+                closeImportance();
+            }
+            if (event.target == evidenceModal) {
+                closeEvidenceModal();
+            }
+        };
+
+        // ========== SISTEMA DE EVIDENCIAS ==========
+
+        // Abrir modal de evidencias
+        function openEvidenceModal(category) {
+            currentCategory = category;
+            currentSlideIndex = 0;
+            const modal = document.getElementById('evidenceModal');
+            const categoryNames = {
+                growth: 'Crecimiento Profesional',
+                work: 'Trabajo & Propósito',
+                health: 'Salud & Bienestar',
+                life: 'Vida Diaria',
+                finance: 'Finanzas',
+                mobility: 'Movilidad'
+            };
+            document.getElementById('evidence-category-title').textContent = `Logros: ${categoryNames[category]}`;
+            renderEvidenceSlider();
+            modal.style.display = 'block';
+        }
+
+        // Cerrar modal de evidencias
+        function closeEvidenceModal() {
+            document.getElementById('evidenceModal').style.display = 'none';
+        }
+
+        // Subir evidencia
+        function uploadEvidence(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const evidence = {
+                    id: Date.now(),
+                    image: e.target.result,
+                    date: new Date().toISOString(),
+                    category: currentCategory
+                };
+
+                if (!evidenceData[currentCategory]) {
+                    evidenceData[currentCategory] = [];
+                }
+                evidenceData[currentCategory].push(evidence);
+                saveEvidence();
+                renderEvidenceSlider();
+                // Resetear input
+                event.target.value = '';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Renderizar slider de evidencias
+        function renderEvidenceSlider() {
+            const container = document.getElementById('evidenceSlider');
+            const evidences = evidenceData[currentCategory] || [];
+
+            if (evidences.length === 0) {
+                container.innerHTML = '<div class="no-evidence">📸 Aún no tienes evidencias. ¡Sube la primera!</div>';
+                return;
+            }
+
+            let sliderHTML = '<div class="slider-container">';
+            sliderHTML += '<div class="slider-track" id="sliderTrack">';
+
+            evidences.forEach((evidence, index) => {
+                const date = new Date(evidence.date);
+                const formattedDate = date.toLocaleDateString('es-ES', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+
+                sliderHTML += `
+                    <div class="slider-item">
+                        <img src="${evidence.image}" alt="Evidencia ${index + 1}" class="slider-image">
+                        <button class="delete-evidence-btn" onclick="deleteEvidence(${evidence.id})">🗑️ Eliminar</button>
+                        <div class="slider-caption">
+                            Logro completado el ${formattedDate}
+                        </div>
+                    </div>
+                `;
+            });
+
+            sliderHTML += '</div>';
+
+            // Agregar controles de navegación si hay más de 1 evidencia
+            if (evidences.length > 1) {
+                sliderHTML += '<button class="slider-nav prev" onclick="changeSlide(-1)">❮</button>';
+                sliderHTML += '<button class="slider-nav next" onclick="changeSlide(1)">❯</button>';
+            }
+
+            sliderHTML += '</div>';
+
+            // Agregar dots si hay más de 1 evidencia
+            if (evidences.length > 1) {
+                sliderHTML += '<div class="slider-dots">';
+                evidences.forEach((_, index) => {
+                    sliderHTML += `<span class="slider-dot ${index === currentSlideIndex ? 'active' : ''}" onclick="goToSlide(${index})"></span>`;
+                });
+                sliderHTML += '</div>';
+            }
+
+            container.innerHTML = sliderHTML;
+            updateSliderPosition();
+        }
+
+        // Cambiar slide
+        function changeSlide(direction) {
+            const evidences = evidenceData[currentCategory] || [];
+            currentSlideIndex += direction;
+
+            if (currentSlideIndex < 0) {
+                currentSlideIndex = evidences.length - 1;
+            } else if (currentSlideIndex >= evidences.length) {
+                currentSlideIndex = 0;
+            }
+
+            updateSliderPosition();
+        }
+
+        // Ir a un slide específico
+        function goToSlide(index) {
+            currentSlideIndex = index;
+            updateSliderPosition();
+        }
+
+        // Actualizar posición del slider
+        function updateSliderPosition() {
+            const track = document.getElementById('sliderTrack');
+            if (track) {
+                track.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+            }
+
+            // Actualizar dots
+            const dots = document.querySelectorAll('.slider-dot');
+            dots.forEach((dot, index) => {
+                if (index === currentSlideIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // Eliminar evidencia
+        function deleteEvidence(evidenceId) {
+            if (!confirm('¿Estás seguro de que quieres eliminar esta evidencia?')) {
+                return;
+            }
+
+            evidenceData[currentCategory] = evidenceData[currentCategory].filter(e => e.id !== evidenceId);
+            saveEvidence();
+
+            // Ajustar índice del slide si es necesario
+            if (currentSlideIndex >= evidenceData[currentCategory].length) {
+                currentSlideIndex = Math.max(0, evidenceData[currentCategory].length - 1);
+            }
+
+            renderEvidenceSlider();
+        }
+
+        // ========== ANIMACIÓN DE CONFETI ==========
+
+        function launchConfetti() {
+            const colors = ['#667eea', '#764ba2', '#f093fb', '#f5576c', '#4facfe', '#00f2fe'];
+            const confettiCount = 50;
+
+            for (let i = 0; i < confettiCount; i++) {
+                setTimeout(() => {
+                    createConfetti(colors[Math.floor(Math.random() * colors.length)]);
+                }, i * 30);
+            }
+        }
+
+        function createConfetti(color) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * window.innerWidth + 'px';
+            confetti.style.background = color;
+            confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+            // Formas aleatorias
+            const shapes = ['circle', 'square'];
+            const shape = shapes[Math.floor(Math.random() * shapes.length)];
+            if (shape === 'circle') {
+                confetti.style.borderRadius = '50%';
+            }
+
+            document.body.appendChild(confetti);
+
+            // Remover después de la animación
+            setTimeout(() => {
+                confetti.remove();
+            }, 3000);
+        }
+
+        // Inicializar al cargar la página
+        window.addEventListener('load', loadData);
+    </script>
+
+</body>
+</html>
