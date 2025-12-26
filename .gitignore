@@ -1,0 +1,32 @@
+# Archivos de configuración local
+config.local.php
+.env
+
+# Logs
+*.log
+logs/
+
+# Backups
+backups/
+*.sql
+*.tar.gz
+
+# IDE y editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos temporales
+tmp/
+temp/
+*.tmp
+
+# Claude Code
+.claude/settings.local.json
