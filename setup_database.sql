@@ -54,3 +54,13 @@ CREATE INDEX idx_completed ON goal_progress(is_completed);
 CREATE INDEX idx_activity_date ON activity_log(action_date);
 CREATE INDEX idx_category ON evidences(category);
 CREATE INDEX idx_uploaded_date ON evidences(uploaded_date);
+
+-- Tabla para almacenar portadas personalizadas de tarjetas
+CREATE TABLE IF NOT EXISTS card_covers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    category VARCHAR(50) NOT NULL UNIQUE,
+    image_url VARCHAR(500) NOT NULL,
+    uploaded_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    INDEX idx_card_category (category)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

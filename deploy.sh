@@ -162,6 +162,15 @@ if [ $? -ne 0 ]; then
     echo ""
 fi
 
+# Paso 8.5: Configurar carpeta de uploads
+echo ""
+echo "→ Configurando carpeta de uploads..."
+mkdir -p "$INSTALL_DIR/uploads/covers"
+chown -R $WEB_USER:$WEB_GROUP "$INSTALL_DIR/uploads"
+chmod -R 755 "$INSTALL_DIR/uploads"
+chmod -R 775 "$INSTALL_DIR/uploads/covers"
+echo "  ✓ Carpeta de uploads configurada"
+
 # Paso 9: Limpiar directorio temporal
 echo ""
 echo "→ Limpiando archivos temporales..."
