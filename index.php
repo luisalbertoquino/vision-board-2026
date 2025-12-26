@@ -721,8 +721,35 @@
                     </div>
                     <div class="card-back">
                         <h3 style="margin-bottom: 20px; color: #667eea; font-size: 1.3em;">Objetivos de Crecimiento</h3>
-                        
-                        <!-- Tecnologías (mensual - 12 por año) -->
+
+                        <!-- Cursos mensuales -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">📚 Cursos completados - 2/mes</span>
+                            </div>
+                            <div class="frequency-label">Desarrollo, diseño, tecnología (24 cursos al año)</div>
+                            <div class="goal-progress" id="courses-progress"></div>
+                        </div>
+
+                        <!-- Libros mensuales -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">📖 Libros leídos - 2/mes</span>
+                            </div>
+                            <div class="frequency-label">1 entretenimiento + 1 educativo (24 libros al año)</div>
+                            <div class="goal-progress" id="books-progress"></div>
+                        </div>
+
+                        <!-- Inglés - Estudio 3x semana -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🌍 Estudio inglés - 3 días/semana</span>
+                            </div>
+                            <div class="frequency-label">1 hora por sesión + repaso fin de semana (156 sesiones)</div>
+                            <div class="goal-progress" id="english-study"></div>
+                        </div>
+
+                        <!-- Tecnologías -->
                         <div class="goal-item">
                             <div class="goal-header">
                                 <span class="goal-text">🚀 Nuevas tecnologías con proyecto funcional</span>
@@ -731,7 +758,7 @@
                             <div class="goal-progress" id="tech-progress"></div>
                         </div>
 
-                        <!-- Dibujos (semanal - 52 por año) -->
+                        <!-- Dibujos -->
                         <div class="goal-item">
                             <div class="goal-header">
                                 <span class="goal-text">🎨 Dibujos semanales en tableta digital</span>
@@ -740,30 +767,7 @@
                             <div class="goal-progress" id="drawing-progress"></div>
                         </div>
 
-                        <!-- Lectura (semanal - 52 semanas) -->
-                        <div class="goal-item">
-                            <div class="goal-header">
-                                <span class="goal-text">📘 Capítulos de libro leídos</span>
-                            </div>
-                            <div class="frequency-label">Meta: 4 por semana (208 al año)</div>
-                            <div class="goal-progress" id="reading-progress"></div>
-                        </div>
-
-                        <!-- Inglés - objetivos únicos -->
-                        <div class="goal-item">
-                            <div class="goal-header">
-                                <span class="goal-text">🌍 Test inicial de inglés técnico</span>
-                            </div>
-                            <div class="goal-progress" id="english-test"></div>
-                        </div>
-
-                        <div class="goal-item">
-                            <div class="goal-header">
-                                <span class="goal-text">🌍 Plan de estudio inglés completado (6 meses)</span>
-                            </div>
-                            <div class="goal-progress" id="english-plan"></div>
-                        </div>
-
+                        <!-- Portafolio -->
                         <div class="goal-item">
                             <div class="goal-header">
                                 <span class="goal-text">🧩 Portafolio actualizado constantemente</span>
@@ -809,23 +813,49 @@
                     </div>
                     <div class="card-back">
                         <h3 style="margin-bottom: 20px; color: #43e97b; font-size: 1.3em;">Objetivos Laborales</h3>
+
+                        <!-- Aplicaciones semanales -->
                         <div class="goal-item">
                             <div class="goal-header">
-                                <span class="goal-text">💻 Búsqueda activa trabajo remoto</span>
+                                <span class="goal-text">📝 Aplicaciones a empleos - 10/semana</span>
+                            </div>
+                            <div class="frequency-label">Búsqueda activa constante (520 aplicaciones al año)</div>
+                            <div class="goal-progress" id="job-applications"></div>
+                        </div>
+
+                        <!-- Networking -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🤝 Networking profesional - 2/semana</span>
+                            </div>
+                            <div class="frequency-label">LinkedIn, eventos, contactos (104 conexiones al año)</div>
+                            <div class="goal-progress" id="networking"></div>
+                        </div>
+
+                        <!-- Entrevistas -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🎯 Entrevistas completadas - Mensual</span>
+                            </div>
+                            <div class="frequency-label">Seguimiento de entrevistas (12 al año)</div>
+                            <div class="goal-progress" id="interviews"></div>
+                        </div>
+
+                        <!-- Lectura sobre influencia -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">📚 Libros: Influencia y comunicación</span>
+                            </div>
+                            <div class="frequency-label">"Cómo influir en otros" y similares (6 libros)</div>
+                            <div class="goal-progress" id="influence-books"></div>
+                        </div>
+
+                        <!-- Objetivo final -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">💼 Conseguir trabajo remoto ideal</span>
                             </div>
                             <div class="goal-progress" id="remote-job"></div>
-                        </div>
-                        <div class="goal-item">
-                            <div class="goal-header">
-                                <span class="goal-text">⚖️ Trabajo con mejor balance tiempo/vida</span>
-                            </div>
-                            <div class="goal-progress" id="work-balance"></div>
-                        </div>
-                        <div class="goal-item">
-                            <div class="goal-header">
-                                <span class="goal-text">🧭 Alineación con crecimiento personal</span>
-                            </div>
-                            <div class="goal-progress" id="work-alignment"></div>
                         </div>
                         <div class="card-buttons-container">
                             <button class="importance-btn" onclick="showImportance('work')">💡 ¿Por qué es importante?</button>
@@ -894,6 +924,23 @@
                                 <span class="goal-text">👓 Compra de lentes</span>
                             </div>
                             <div class="goal-progress" id="glasses"></div>
+                        </div>
+
+                        <!-- Habilidades Sociales -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">😊 Ser más amigable - Diario</span>
+                            </div>
+                            <div class="frequency-label">Saludar, sonreír, iniciar conversaciones (365 días)</div>
+                            <div class="goal-progress" id="friendly-interactions"></div>
+                        </div>
+
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">😄 Ser más divertido - Diario</span>
+                            </div>
+                            <div class="frequency-label">Contar chistes, hacer reír a otros (365 días)</div>
+                            <div class="goal-progress" id="humor-moments"></div>
                         </div>
 
                         <div class="card-buttons-container">
@@ -985,29 +1032,76 @@
                         </div>
                     </div>
                     <div class="card-back">
-                        <h3 style="margin-bottom: 20px; color: #a8edea; font-size: 1.3em;">Objetivos Financieros</h3>
-                        
+                        <h3 style="margin-bottom: 20px; color: #a8edea; font-size: 1.3em;">Objetivos Financieros 2026</h3>
+
+                        <!-- Presupuesto Enero 2026 - Ahorro como gasto fijo -->
                         <div class="goal-item">
                             <div class="goal-header">
-                                <span class="goal-text">🏦 Meses ahorrando para fondo de emergencia</span>
+                                <span class="goal-text">💰 Ahorro mensual (gasto fijo) - 12 meses</span>
                             </div>
-                            <div class="frequency-label">Meta: 12 meses consecutivos</div>
+                            <div class="frequency-label">Ahorrar PRIMERO antes que gastar (12 meses)</div>
                             <div class="goal-progress" id="savings-progress"></div>
                         </div>
 
+                        <!-- Prioridad de pagos: Comfamiliar -->
                         <div class="goal-item">
                             <div class="goal-header">
-                                <span class="goal-text">✅ Pago final crédito Comfamiliar</span>
+                                <span class="goal-text">🏦 Pago total Comfamiliar (PRIORIDAD 1)</span>
                             </div>
                             <div class="goal-progress" id="comfamiliar"></div>
                         </div>
 
+                        <!-- Prioridad de pagos: ICETEX -->
                         <div class="goal-item">
                             <div class="goal-header">
-                                <span class="goal-text">📉 Pagos mensuales ICETEX</span>
+                                <span class="goal-text">📉 Pagos ICETEX (PRIORIDAD 2) - Mensual</span>
                             </div>
                             <div class="frequency-label">Reducción progresiva (12 pagos)</div>
                             <div class="goal-progress" id="icetex-progress"></div>
+                        </div>
+
+                        <!-- Presupuesto para ortodoncia -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🦷 Presupuesto ortodoncia (semestre)</span>
+                            </div>
+                            <div class="frequency-label">Ahorro mensual para citas (6 meses)</div>
+                            <div class="goal-progress" id="orthodontics-budget"></div>
+                        </div>
+
+                        <!-- Presupuesto para inglés -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🌍 Presupuesto curso inglés (2do semestre)</span>
+                            </div>
+                            <div class="frequency-label">Ahorro para 6 meses de estudio</div>
+                            <div class="goal-progress" id="english-budget"></div>
+                        </div>
+
+                        <!-- Inversiones seguras -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">📈 Investigar inversiones seguras</span>
+                            </div>
+                            <div class="frequency-label">CDTs, fondos, alternativas de bajo riesgo</div>
+                            <div class="goal-progress" id="investment-research"></div>
+                        </div>
+
+                        <!-- Ingresos extra -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">💼 Fuentes de ingreso extra</span>
+                            </div>
+                            <div class="frequency-label">Freelance, proyectos, consultoría</div>
+                            <div class="goal-progress" id="extra-income"></div>
+                        </div>
+
+                        <!-- Plan 2027: Moto -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🛵 Plan 2027: Usar bonificación para moto</span>
+                            </div>
+                            <div class="goal-progress" id="motorcycle-fund"></div>
                         </div>
 
                         <div class="card-buttons-container">
@@ -1047,19 +1141,49 @@
                     </div>
                     <div class="card-back">
                         <h3 style="margin-bottom: 20px; color: #ff9a9e; font-size: 1.3em;">Objetivos de Movilidad</h3>
-                        
+
+                        <!-- Licencias -->
                         <div class="goal-item">
                             <div class="goal-header">
-                                <span class="goal-text">🪪 Pase de conducción moto (prioridad)</span>
+                                <span class="goal-text">🪪 Licencia A2 (Moto) - PRIORIDAD</span>
                             </div>
+                            <div class="frequency-label">Categoría A2 para motos hasta 500cc</div>
                             <div class="goal-progress" id="license-moto"></div>
                         </div>
 
                         <div class="goal-item">
                             <div class="goal-header">
-                                <span class="goal-text">🚗 Pase de conducción carro (opcional)</span>
+                                <span class="goal-text">🚗 Licencia B1 (Carro) - Opcional</span>
                             </div>
+                            <div class="frequency-label">Para viajes largos y clima adverso</div>
                             <div class="goal-progress" id="license-car"></div>
+                        </div>
+
+                        <!-- Tipo de moto deseada -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🏍️ Investigar moto: Naked/Sport 250-300cc</span>
+                            </div>
+                            <div class="frequency-label">Yamaha MT-03, KTM Duke 390, BMW G310R o similar</div>
+                            <div class="goal-progress" id="motorcycle-research"></div>
+                        </div>
+
+                        <!-- Plan de compra 2027 -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">💰 Plan de compra 2027: Usar bonificación</span>
+                            </div>
+                            <div class="frequency-label">Ahorro + bonificación anual para compra</div>
+                            <div class="goal-progress" id="motorcycle-purchase-plan"></div>
+                        </div>
+
+                        <!-- Curso de manejo defensivo -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🛡️ Curso de manejo defensivo</span>
+                            </div>
+                            <div class="frequency-label">Seguridad en moto, técnicas avanzadas</div>
+                            <div class="goal-progress" id="defensive-driving"></div>
                         </div>
 
                         <div class="card-buttons-container">
@@ -1228,31 +1352,43 @@
     <script>
         // Configuración de objetivos con su frecuencia
         const goalsConfig = {
+            'courses-progress': { max: 24, category: 'growth' }, // 2 cursos/mes
+            'books-progress': { max: 24, category: 'growth' }, // 2 libros/mes
+            'english-study': { max: 156, category: 'growth' }, // 3 días/semana
             'tech-progress': { max: 24, category: 'growth' },
             'drawing-progress': { max: 52, category: 'growth' },
-            'reading-progress': { max: 52, category: 'growth' }, // Mostramos semanas, no capítulos individuales
-            'english-test': { max: 1, category: 'growth' },
-            'english-plan': { max: 6, category: 'growth' }, // 6 meses de plan
             'portfolio-progress': { max: 12, category: 'growth' },
             
-            'remote-job': { max: 1, category: 'work' },
-            'work-balance': { max: 1, category: 'work' },
-            'work-alignment': { max: 1, category: 'work' },
+            'job-applications': { max: 52, category: 'work' }, // 10/semana (mostramos semanas)
+            'networking': { max: 104, category: 'work' }, // 2/semana
+            'interviews': { max: 12, category: 'work' }, // Mensual
+            'influence-books': { max: 6, category: 'work' }, // 6 libros sobre influencia
+            'remote-job': { max: 1, category: 'work' }, // Objetivo final
             
-            'running-progress': { max: 52, category: 'health' }, // Mostramos semanas para simplificar
+            'running-progress': { max: 156, category: 'health' }, // 3x semana
             'orthodontics-progress': { max: 12, category: 'health' },
             'sugar-progress': { max: 52, category: 'health' }, // Semanas sin azúcar
             'glasses': { max: 1, category: 'health' },
+            'friendly-interactions': { max: 365, category: 'health' }, // Diario
+            'humor-moments': { max: 365, category: 'health' }, // Diario
             
             'cooking-progress': { max: 52, category: 'life' },
             'routines': { max: 1, category: 'life' },
             
-            'savings-progress': { max: 12, category: 'finance' },
-            'comfamiliar': { max: 1, category: 'finance' },
-            'icetex-progress': { max: 12, category: 'finance' },
+            'savings-progress': { max: 12, category: 'finance' }, // 12 meses ahorrando
+            'comfamiliar': { max: 1, category: 'finance' }, // Pago único
+            'icetex-progress': { max: 12, category: 'finance' }, // 12 pagos mensuales
+            'orthodontics-budget': { max: 6, category: 'finance' }, // 6 meses
+            'english-budget': { max: 1, category: 'finance' }, // Objetivo único
+            'investment-research': { max: 1, category: 'finance' }, // Objetivo único
+            'extra-income': { max: 1, category: 'finance' }, // Objetivo único
+            'motorcycle-fund': { max: 1, category: 'finance' }, // Plan 2027
 
-            'license-moto': { max: 1, category: 'mobility' },
-            'license-car': { max: 1, category: 'mobility' },
+            'license-moto': { max: 1, category: 'mobility' }, // Licencia A2
+            'license-car': { max: 1, category: 'mobility' }, // Licencia B1
+            'motorcycle-research': { max: 1, category: 'mobility' }, // Investigar motos
+            'motorcycle-purchase-plan': { max: 1, category: 'mobility' }, // Plan 2027
+            'defensive-driving': { max: 1, category: 'mobility' }, // Curso seguridad
 
             'family-connection': { max: 24, category: 'social' }, // 2 actividades/mes
             'new-friends': { max: 12, category: 'social' }, // 1 amistad/mes
