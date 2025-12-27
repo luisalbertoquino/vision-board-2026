@@ -58,14 +58,6 @@
             margin-bottom: 30px;
         }
 
-        /* Centrar la última tarjeta (7ma) */
-        .card-container:nth-child(7) {
-            grid-column: 1 / -1;
-            max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
         .card-container {
             perspective: 1000px;
             height: 500px;
@@ -1315,6 +1307,80 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Card 8: Biblioteca Personal -->
+            <div class="card-container">
+                <div class="card card-books">
+                    <div class="card-front">
+                        <div class="card-image-container">
+                            <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=400&fit=crop"
+                                 alt="Biblioteca"
+                                 class="card-image"
+                                 onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22400%22%3E%3Crect fill=%22%23feca57%22 width=%22800%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2240%22 fill=%22white%22%3E📚 Biblioteca%3C/text%3E%3C/svg%3E'">
+                            <div class="card-image-overlay"></div>
+                            <div class="card-icon">📚</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div class="card-title">Biblioteca Personal</div>
+                                <div class="card-subtitle">Conocimiento y entretenimiento</div>
+                            </div>
+                            <div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progress-books" style="width: 0%"></div>
+                                </div>
+                                <p style="margin-top: 10px; font-size: 1em;">Toca para ver objetivos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3 style="color: #feca57; margin-bottom: 15px;">📚 Biblioteca Personal</h3>
+
+                        <!-- Libros de Ficción -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">📖 Libros de ficción - 1/mes</span>
+                            </div>
+                            <div class="frequency-label">Novelas, cuentos, entretenimiento (12 libros al año)</div>
+                            <div class="goal-progress" id="fiction-books"></div>
+                        </div>
+
+                        <!-- Libros Educativos -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">📘 Libros educativos - 1/mes</span>
+                            </div>
+                            <div class="frequency-label">Desarrollo personal, técnicos, profesionales (12 libros)</div>
+                            <div class="goal-progress" id="educational-books"></div>
+                        </div>
+
+                        <!-- Resúmenes y Notas -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">📝 Resúmenes de libros - 2/mes</span>
+                            </div>
+                            <div class="frequency-label">Documentar aprendizajes clave (24 resúmenes)</div>
+                            <div class="goal-progress" id="book-summaries"></div>
+                        </div>
+
+                        <!-- Organizar Biblioteca -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">📂 Organizar biblioteca digital - Trimestral</span>
+                            </div>
+                            <div class="frequency-label">Catalogar y ordenar libros (4 veces al año)</div>
+                            <div class="goal-progress" id="organize-library"></div>
+                        </div>
+
+                        <div class="card-buttons-container">
+                            <button class="importance-btn" onclick="showImportance('books')">💡 ¿Por qué es importante?</button>
+                            <button class="evidence-btn" onclick="openEvidenceModal('books')">🏆 Ver Logros</button>
+                        </div>
+                        <input type="file" id="cover-upload-books" class="cover-upload-input" accept="image/*" onchange="uploadCover('books', this)">
+                        <button class="change-cover-btn" onclick="document.getElementById('cover-upload-books').click()">📷 Cambiar Portada</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Estadísticas Resumen -->
@@ -1425,7 +1491,12 @@
             'social-events': { max: 24, category: 'social' }, // 2 eventos/mes
             'dating': { max: 24, category: 'social' }, // 2 citas/mes
             'kegel-exercises': { max: 260, category: 'social' }, // Lunes-viernes noche
-            'gratitude': { max: 365, category: 'social' } // Diario
+            'gratitude': { max: 365, category: 'social' }, // Diario
+
+            'fiction-books': { max: 12, category: 'books' }, // 1 libro ficción/mes
+            'educational-books': { max: 12, category: 'books' }, // 1 libro educativo/mes
+            'book-summaries': { max: 24, category: 'books' }, // 2 resúmenes/mes
+            'organize-library': { max: 4, category: 'books' } // Trimestral
         };
 
         // Contenido de importancia para cada categoría
@@ -1621,6 +1692,42 @@
                     </ul>
 
                     <p><strong>El éxito sin conexiones humanas es vacío.</strong> Invierte tiempo en relaciones significativas - es la inversión más valiosa que puedes hacer.</p>
+                `
+            },
+            'books': {
+                icon: '📚',
+                title: 'Biblioteca Personal',
+                content: `
+                    <h3>La lectura es inversión compuesta en ti mismo</h3>
+                    <p>Cada libro es la destilación de <strong>años de experiencia de alguien más</strong> que puedes absorber en días. Warren Buffett dedica 5-6 horas diarias a leer porque entiende que el conocimiento se acumula exponencialmente.</p>
+
+                    <h3>Libros de ficción:</h3>
+                    <ul>
+                        <li><strong>Empatía:</strong> Te permite vivir vidas diferentes y entender perspectivas distintas</li>
+                        <li><strong>Creatividad:</strong> Estimula la imaginación y el pensamiento lateral</li>
+                        <li><strong>Reducción de estrés:</strong> Leer ficción reduce el cortisol y mejora el sueño</li>
+                        <li><strong>Vocabulario y comunicación:</strong> Mejora tu capacidad de expresarte</li>
+                    </ul>
+
+                    <h3>Libros educativos:</h3>
+                    <p>Los libros técnicos y de desarrollo personal <strong>son atajos hacia el éxito</strong>:</p>
+                    <ul>
+                        <li><strong>Aprende de los errores de otros:</strong> Evita cometer los mismos fallos</li>
+                        <li><strong>Frameworks mentales:</strong> Adquieres modelos para tomar mejores decisiones</li>
+                        <li><strong>Ventaja competitiva:</strong> El conocimiento especializado te diferencia profesionalmente</li>
+                        <li><strong>ROI infinito:</strong> Una idea de un libro puede cambiar tu vida o carrera completamente</li>
+                    </ul>
+
+                    <h3>Documentar aprendizajes:</h3>
+                    <p>Leer sin anotar es como comer sin digerir:</p>
+                    <ul>
+                        <li><strong>Retención:</strong> Escribir resúmenes multiplica x10 lo que recuerdas</li>
+                        <li><strong>Biblioteca personal:</strong> Creas tu propio Wikipedia consultable</li>
+                        <li><strong>Conexiones:</strong> Al escribir, conectas ideas de diferentes libros</li>
+                        <li><strong>Evolución:</strong> Puedes revisar cómo tu pensamiento ha cambiado con el tiempo</li>
+                    </ul>
+
+                    <p><strong>Los líderes son lectores.</strong> Bill Gates lee 50 libros al año, Elon Musk aprendió a construir cohetes leyendo. La lectura consistente es el hábito común de las personas exitosas.</p>
                 `
             }
         };
