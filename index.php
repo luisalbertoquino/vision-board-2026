@@ -58,6 +58,13 @@
             margin-bottom: 30px;
         }
 
+        /* Centrar la última tarjeta cuando hay número impar */
+        .card-container:last-child:nth-child(odd) {
+            grid-column: 1 / -1;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
         .card-container {
             perspective: 1000px;
             height: 500px;
@@ -1043,39 +1050,67 @@
                             <div class="goal-progress" id="savings-progress"></div>
                         </div>
 
-                        <!-- Prioridad de pagos: Comfamiliar -->
+                        <!-- Bolsillo Comfamiliar -->
                         <div class="goal-item">
                             <div class="goal-header">
-                                <span class="goal-text">🏦 Pago total Comfamiliar (PRIORIDAD 1)</span>
+                                <span class="goal-text">🏦 Bolsillo Comfamiliar: $800k → $2.8M</span>
                             </div>
-                            <div class="goal-progress" id="comfamiliar"></div>
+                            <div class="frequency-label">Ahorrar $800k mensuales como bolsillo (meta $2.8M)</div>
+                            <div class="goal-progress" id="comfamiliar-pocket"></div>
                         </div>
 
-                        <!-- Prioridad de pagos: ICETEX -->
+                        <!-- Pase moto: Prima + 200k mensuales -->
                         <div class="goal-item">
                             <div class="goal-header">
-                                <span class="goal-text">📉 Pagos ICETEX (PRIORIDAD 2) - Mensual</span>
+                                <span class="goal-text">🏍️ Pase moto: Prima mitad de mes + $200k/mes</span>
+                            </div>
+                            <div class="frequency-label">Pagos mensuales de $200k (12 meses)</div>
+                            <div class="goal-progress" id="motorcycle-license-fund"></div>
+                        </div>
+
+                        <!-- Bolsillo familiar -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">👨‍👩‍👧 Bolsillo familiar: $20k/mes para 2027</span>
+                            </div>
+                            <div class="frequency-label">Ahorro anual = $240k para salida familiar 2027</div>
+                            <div class="goal-progress" id="family-fund"></div>
+                        </div>
+
+                        <!-- Bolsillo ortodoncia -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🦷 Bolsillo ortodoncia: $150-200k/mes</span>
+                            </div>
+                            <div class="frequency-label">18 meses = $2.7M-3.6M (brackets metálicos ~$3M)</div>
+                            <div class="goal-progress" id="orthodontics-pocket"></div>
+                        </div>
+
+                        <!-- Preparación previa inglés -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">🌍 Preparación inglés (ene-may) + Curso (jun-dic)</span>
+                            </div>
+                            <div class="frequency-label">5 meses preparación + 6 meses curso formal</div>
+                            <div class="goal-progress" id="english-preparation"></div>
+                        </div>
+
+                        <!-- Bolsillo curso inglés -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">💰 Bolsillo curso inglés: $150-200k/mes</span>
+                            </div>
+                            <div class="frequency-label">Ahorro ene-may = $750k-1M para curso jun-dic</div>
+                            <div class="goal-progress" id="english-pocket"></div>
+                        </div>
+
+                        <!-- Pagos ICETEX -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-text">📉 Pagos ICETEX - Mensual</span>
                             </div>
                             <div class="frequency-label">Reducción progresiva (12 pagos)</div>
                             <div class="goal-progress" id="icetex-progress"></div>
-                        </div>
-
-                        <!-- Presupuesto para ortodoncia -->
-                        <div class="goal-item">
-                            <div class="goal-header">
-                                <span class="goal-text">🦷 Presupuesto ortodoncia (semestre)</span>
-                            </div>
-                            <div class="frequency-label">Ahorro mensual para citas (6 meses)</div>
-                            <div class="goal-progress" id="orthodontics-budget"></div>
-                        </div>
-
-                        <!-- Presupuesto para inglés -->
-                        <div class="goal-item">
-                            <div class="goal-header">
-                                <span class="goal-text">🌍 Presupuesto curso inglés (2do semestre)</span>
-                            </div>
-                            <div class="frequency-label">Ahorro para 6 meses de estudio</div>
-                            <div class="goal-progress" id="english-budget"></div>
                         </div>
 
                         <!-- Inversiones seguras -->
@@ -1094,14 +1129,6 @@
                             </div>
                             <div class="frequency-label">Freelance, proyectos, consultoría</div>
                             <div class="goal-progress" id="extra-income"></div>
-                        </div>
-
-                        <!-- Plan 2027: Moto -->
-                        <div class="goal-item">
-                            <div class="goal-header">
-                                <span class="goal-text">🛵 Plan 2027: Usar bonificación para moto</span>
-                            </div>
-                            <div class="goal-progress" id="motorcycle-fund"></div>
                         </div>
 
                         <div class="card-buttons-container">
@@ -1260,13 +1287,13 @@
                             <div class="goal-progress" id="dating"></div>
                         </div>
 
-                        <!-- Crecimiento Espiritual -->
+                        <!-- Ejercicios Kegel -->
                         <div class="goal-item">
                             <div class="goal-header">
-                                <span class="goal-text">🧘 Meditación y reflexión - 3 días/semana</span>
+                                <span class="goal-text">🧘 Ejercicios Kegel - Lunes a Viernes (noche)</span>
                             </div>
-                            <div class="frequency-label">Práctica espiritual constante (156 sesiones al año)</div>
-                            <div class="goal-progress" id="meditation"></div>
+                            <div class="frequency-label">Rutina nocturna para salud pélvica (260 sesiones al año)</div>
+                            <div class="goal-progress" id="kegel-exercises"></div>
                         </div>
 
                         <!-- Gratitud -->
@@ -1376,13 +1403,15 @@
             'routines': { max: 1, category: 'life' },
             
             'savings-progress': { max: 12, category: 'finance' }, // 12 meses ahorrando
-            'comfamiliar': { max: 1, category: 'finance' }, // Pago único
+            'comfamiliar-pocket': { max: 4, category: 'finance' }, // 800k x 4 meses = 3.2M (>2.8M meta)
             'icetex-progress': { max: 12, category: 'finance' }, // 12 pagos mensuales
-            'orthodontics-budget': { max: 6, category: 'finance' }, // 6 meses
-            'english-budget': { max: 1, category: 'finance' }, // Objetivo único
+            'orthodontics-pocket': { max: 18, category: 'finance' }, // 150-200k x 18 meses
+            'english-preparation': { max: 1, category: 'growth' }, // Ene-May preparación
+            'english-pocket': { max: 5, category: 'finance' }, // 150-200k x 5 meses (ene-may)
             'investment-research': { max: 1, category: 'finance' }, // Objetivo único
             'extra-income': { max: 1, category: 'finance' }, // Objetivo único
-            'motorcycle-fund': { max: 1, category: 'finance' }, // Plan 2027
+            'motorcycle-license-fund': { max: 12, category: 'finance' }, // Prima + 200k/mes
+            'family-fund': { max: 12, category: 'finance' } // 20k/mes x 12 meses = 240k para 2027
 
             'license-moto': { max: 1, category: 'mobility' }, // Licencia A2
             'license-car': { max: 1, category: 'mobility' }, // Licencia B1
@@ -1394,7 +1423,7 @@
             'new-friends': { max: 12, category: 'social' }, // 1 amistad/mes
             'social-events': { max: 24, category: 'social' }, // 2 eventos/mes
             'dating': { max: 24, category: 'social' }, // 2 citas/mes
-            'meditation': { max: 156, category: 'social' }, // 3 días/semana
+            'kegel-exercises': { max: 260, category: 'social' }, // Lunes-viernes noche
             'gratitude': { max: 365, category: 'social' } // Diario
         };
 
