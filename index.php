@@ -62,7 +62,7 @@
         .card-container:nth-child(7) {
             grid-column: 1 / -1;
             max-width: 400px;
-            margin: 0 auto;
+            justify-self: center;
         }
 
         .card-container {
