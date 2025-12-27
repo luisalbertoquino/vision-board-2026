@@ -58,8 +58,8 @@
             margin-bottom: 30px;
         }
 
-        /* Centrar la última tarjeta cuando hay número impar */
-        .card-container:last-child:nth-child(odd) {
+        /* Centrar la última tarjeta (7ma) */
+        .card-container:nth-child(7) {
             grid-column: 1 / -1;
             max-width: 400px;
             margin: 0 auto;
