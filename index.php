@@ -1411,7 +1411,7 @@
             'investment-research': { max: 1, category: 'finance' }, // Objetivo único
             'extra-income': { max: 1, category: 'finance' }, // Objetivo único
             'motorcycle-license-fund': { max: 12, category: 'finance' }, // Prima + 200k/mes
-            'family-fund': { max: 12, category: 'finance' } // 20k/mes x 12 meses = 240k para 2027
+            'family-fund': { max: 12, category: 'finance' }, // 20k/mes x 12 meses = 240k para 2027
 
             'license-moto': { max: 1, category: 'mobility' }, // Licencia A2
             'license-car': { max: 1, category: 'mobility' }, // Licencia B1
